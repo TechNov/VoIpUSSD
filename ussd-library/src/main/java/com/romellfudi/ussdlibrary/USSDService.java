@@ -74,11 +74,19 @@ public class USSDService extends AccessibilityService {
                 USSDController.instance.callbackInvoke.over(response);
             } else {
                 // sent option 1
-                if (USSDController.instance.callbackMessage == null)
+//                if (USSDController.instance.callbackMessage == null)
+//                    USSDController.instance.callbackInvoke.responseInvoke(response);
+//                else {
+//                    USSDController.instance.callbackMessage.responseMessage(response);
+//                    USSDController.instance.callbackMessage = null;
+//                }
+//            }
+//        }
+                if (USSDController.instance.callbackInvoke != null) {
                     USSDController.instance.callbackInvoke.responseInvoke(response);
-                else {
+                    USSDController.instance.callbackInvoke = null;
+                } else {
                     USSDController.instance.callbackMessage.responseMessage(response);
-                    USSDController.instance.callbackMessage = null;
                 }
             }
         }
